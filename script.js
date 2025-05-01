@@ -8,32 +8,32 @@ const videos =[
         username: '@steve',
         caption:'check out this cool clip',
         color:'black',
-        videoUrl: 'webapp/videos/now.mp4'
+        videoUrl: 'videos/now.mp4'
     },
     {
         username: '@maiko',
         caption:'Another awesome moment',
         color:'#e67e22',
-        videoUrl: 'webapp/videos/after.mp4'
+        videoUrl: 'videos/after.mp4'
     },
     {
         username: '@cryptoKing',
         caption:'Ton tipping is live',
         color:'#9b59b6',
-        videoUrl: 'webapp/videos/where.mp4'
+        videoUrl: 'videos/where.mp4'
 
     },
     {
         username: '@quantumtradercfd',
         caption:'Tip me to get more videos like this',
         color:'#9b59b6',
-        videoUrl: 'webapp/videos/then.mp4'
+        videoUrl: 'videos/then.mp4'
     },
     {
         username: '@barryrwa',
         caption:'This is how  you learn python',
         color:'#9b59b8',
-        videoUrl: 'webapp/videos/when.mp4',
+        videoUrl: 'videos/when.mp4',
 
     }
 ];
@@ -65,7 +65,7 @@ videos.forEach((video, index) => {
 
     const actionsDiv = document.createElement('div');
     actionsDiv.classList.add('video-actions');
-    actionsDiv.innerHTML = `<button class="like-button" onclick="likeVideo(${index})">♥</button><button onclick="tipCreator('${video.username}')">💲</button><button onclick="shareVideo('${video.caption}','${video.username}')">📤</button><button onclick="toggleComments(${index})">🧾</button>`;
+    actionsDiv.innerHTML = `<button onclick="tipCreator('${video.username}')">💲</button><button onclick="shareVideo('${video.caption}','${video.username}')">📤</button><button onclick="toggleComments(${index})">🧾</button>`;
 
     const commentDiv = document.createElement('div');
     commentDiv.classList.add('comment-section');
@@ -79,6 +79,10 @@ videos.forEach((video, index) => {
 
     app.appendChild(videoDiv);
 });
+// show telegram button when a video is in view
+function onVideoInView(videoIndex) {
+    Telegram.WebApp.MainButton.setText("❤ Like This Video").show().onClick(() => handleLike(videoIndex));
+}
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
