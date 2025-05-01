@@ -1,5 +1,7 @@
 let userInteracted = false;
 const tg = window.Telegram.WebApp;
+window.Telegram.WebApp.ready();
+Telegram.WebApp.expand();
 window.addEventListener('click',() => {
     userInteracted=true;
 });
