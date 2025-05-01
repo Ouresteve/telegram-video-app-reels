@@ -8,7 +8,7 @@ const videos =[
         username: '@steve',
         caption:'check out this cool clip',
         color:'black',
-        videoUrl: 'webappvideos/now.mp4'
+        videoUrl: 'webapp/videos/now.mp4'
     },
     {
         username: '@maiko',
