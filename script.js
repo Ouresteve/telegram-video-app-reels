@@ -1,7 +1,6 @@
 let userInteracted = false;
 const tg = window.Telegram.WebApp;
-window.Telegram.WebApp.ready();
-Telegram.WebApp.expand();
+
 window.addEventListener('click',() => {
     userInteracted=true;
 });
@@ -67,7 +66,7 @@ videos.forEach((video, index) => {
 
     const actionsDiv = document.createElement('div');
     actionsDiv.classList.add('video-actions');
-    actionsDiv.innerHTML = `<button onclick="tipCreator('${video.username}')">💲</button><button onclick="shareVideo('${video.caption}','${video.username}')">📤</button><button onclick="toggleComments(${index})">🧾</button>`;
+    actionsDiv.innerHTML = `<button onclick="likeVideo(${index})"> </button><button onclick="tipCreator('${video.username}')">💲</button><button onclick="shareVideo('${video.caption}','${video.username}')">📤</button><button onclick="toggleComments(${index})">🧾</button>`;
 
     const commentDiv = document.createElement('div');
     commentDiv.classList.add('comment-section');
@@ -81,10 +80,7 @@ videos.forEach((video, index) => {
 
     app.appendChild(videoDiv);
 });
-// show telegram button when a video is in view
-function onVideoInView(videoIndex) {
-    Telegram.WebApp.MainButton.setText("❤ Like This Video").show().onClick(() => handleLike(videoIndex));
-}
+// show telegram button when a video is in 
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
