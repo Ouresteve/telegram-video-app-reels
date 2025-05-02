@@ -204,7 +204,7 @@ function createProfilePage() {
     profileDiv.classList.add('profile-page');
 
     const profilePic = document.createElement('img');
-    profilePic.src = 'videos/profile.jpg';
+    profilePic.src = 'webapp/videos/profile.jpg';
     profilePic.alt = 'Profile Picture';
     profilePic.classList.add('profile-pic');
 
