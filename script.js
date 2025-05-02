@@ -209,7 +209,7 @@ function createProfilePage() {
     profilePic.classList.add('profile-pic');
 
     const username = document.createElement ('h3');
-    username.textcontent = '@Steve Oure';
+    username.textContent = '@Steve Oure';
 
     const statsRow = document.createElement('div');
     statsRow.classList.add('stats-row');
