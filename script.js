@@ -256,10 +256,6 @@ function createProfilePage() {
 
 }
 
-document.querySelectorAll('.video-player').forEach(video => {
-    observer.observe(video);
-});
-
 function likeVideo(index) {
     const videoDiv = document.querySelectorAll('.video')[index];
     const likeButton = videoDiv.querySelector('.like-video');
