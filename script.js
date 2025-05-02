@@ -196,7 +196,63 @@ function createUploadPage() {
 
     return uploadDiv;
 }
+
+
+
 function createProfilePage() {
+    const profileDiv = document.createElement('div');
+    profileDiv.classList.add('profile-page');
+
+    const profilePic = document.createElement('img');
+    profilePic.src = 'videos/profile.jpg';
+    profilePic.alt = 'Profile Picture';
+    profilePic.classList.add('profile-pic');
+
+    const username = document.createElement ('h3');
+    username.textcontent = '@Steve Oure';
+
+    const statsRow = document.createElement('div');
+    statsRow.classList.add('stats-row');
+
+    const followersBtn = document.createElement('button');
+    
+    followersBtn.textContent = '0 followers';
+
+    const likesBtn = document.createElement('button');
+    likesBtn.textContent = '0 likes';
+
+    const walletBtn= document.createElement('button');
+    walletBtn.textContent = ' Wallet';
+
+    statsRow.appendChild(followersBtn);
+    statsRow.appendChild(likesBtn);
+    statsRow.appendChild(walletBtn);
+
+    const bottomDiv = document.createElement('div');
+    bottomDiv.classList.add('bottom-bar');
+    bottomDiv.innerHTML= `<button onclick= showPage('home')><i class="fas fa-home"></i></button><button onclick="showPage('search')"><i class="fas fa-search"></i></button><button onclick="showPage('upload')"><i class="fas fa-upload"></i></button><button onclick="showPage('profile')"><i class="fas fa-user"></i></button>`;
+   
+
+    const videoGrid = document.createElement('div');
+    videoGrid.classList.add('video-grid');
+    
+    const thumb = document.createElement('video');
+    thumb.src= 'videos/after.mp4';
+    thumb.controls = false;
+    thumb.muted = true;
+    thumb.classList.add('video-thumb');
+
+    thumb.onclick =()=> {
+        alert('open video viewer');
+    };
+    videoGrid.appendChild(thumb);
+    profileDiv.appendChild(bottomDiv);
+    profileDiv.appendChild(profilePic);
+    profileDiv.appendChild(username);
+    profileDiv.appendChild(statsRow);
+    profileDiv.appendChild(videoGrid);
+    
+    return profileDiv;
 
 }
 
