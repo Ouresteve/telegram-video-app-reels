@@ -22,7 +22,7 @@ const observer = new IntersectionObserver((entries) => {
 });
 
 
-showPage("home");
+showPage("profile");
 function showPage(pageName) {
     
     clearApp();
@@ -123,7 +123,7 @@ function createHomePage() {
        
         const bottomDiv = document.createElement('div');
         bottomDiv.classList.add('bottom-bar');
-        bottomDiv.innerHTML= `<button><i class="fas fa-home"></i></button><button onclick="showPage('search')"><i class="fas fa-search"></i></button><button onclick="showPage('upload')"><i class="fas fa-upload"></i></button><button onclick="showPage('profile')"><i class="fas fa-user"></i></button>`;
+        bottomDiv.innerHTML= `<button style="background: red"><i class="fas fa-home"></i></button><button onclick="showPage('search')"><i class="fas fa-search"></i></button><button onclick="showPage('upload')"><i class="fas fa-upload"></i></button><button onclick="showPage('profile')"><i class="fas fa-user"></i></button>`;
         videoDiv.appendChild(bottomDiv);
         videoDiv.appendChild(commentDiv);
         videoDiv.appendChild(videoEl);
@@ -179,7 +179,7 @@ function createUploadPage() {
 
     const bottomDiv = document.createElement('div');
     bottomDiv.classList.add('bottom-bar');
-    bottomDiv.innerHTML= `<button onclick= showPage('home')><i class="fas fa-home"></i></button><button onclick="showPage('search')"><i class="fas fa-search"></i></button><button onclick="showPage('upload')"><i class="fas fa-upload"></i></button><button onclick="showPage('profile')"><i class="fas fa-user"></i></button>`;
+    bottomDiv.innerHTML= `<button onclick= showPage('home')><i class="fas fa-home"></i></button><button onclick="showPage('search')"><i class="fas fa-search"></i></button><button style="background: red" onclick="showPage('upload')"><i class="fas fa-upload"></i></button><button onclick="showPage('profile')"><i class="fas fa-user"></i></button>`;
     
     
     
@@ -230,7 +230,7 @@ function createProfilePage() {
 
     const bottomDiv = document.createElement('div');
     bottomDiv.classList.add('bottom-bar');
-    bottomDiv.innerHTML= `<button onclick= showPage('home')><i class="fas fa-home"></i></button><button onclick="showPage('search')"><i class="fas fa-search"></i></button><button onclick="showPage('upload')"><i class="fas fa-upload"></i></button><button onclick="showPage('profile')"><i class="fas fa-user"></i></button>`;
+    bottomDiv.innerHTML= `<button onclick= showPage('home')><i class="fas fa-home"></i></button><button onclick="showPage('search')"><i class="fas fa-search"></i></button><button onclick="showPage('upload')"><i class="fas fa-upload"></i></button><button style="background: red" onclick="showPage('profile')"><i class="fas fa-user"></i></button>`;
    
 
     const videoGrid = document.createElement('div');
