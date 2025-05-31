@@ -1,6 +1,3 @@
-if ( typeof Telegram === 'undefined' || !Telegram.webApp) {
-    directPage();
-}
 
 let userInteracted = false;
 window.addEventListener('click',() => {
@@ -8,6 +5,10 @@ window.addEventListener('click',() => {
 });
 //app is fetched
 const app = document.getElementById('app');
+if ( typeof Telegram === 'undefined' || !Telegram.webApp) {
+    app.innerHtml= `<h2> Open this app in telegram @tip_reelsbot for the best experience`;
+}
+
 const pages ={
     home: createHomePage,
     search: createSearchPage,
