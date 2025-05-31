@@ -63,13 +63,13 @@ function createHomePage() {
               username: '@steve',
               caption:'check out this cool clip',
               color:'black',
-              videoUrl: 'videos/now.mp4'
+              videoUrl: 'webapp/videos/now.mp4'
          },
         {
              username: '@maiko',
              caption:'Some things they solid they are built to last , some things  they fall apart they break like glass, sometimes its scary what they call love and how first what is  can turn to what was ,waking up this morning , and im drank agaain ... without you here,',
              color:'black',
-             videoUrl: 'videos/after.mp4'
+             videoUrl: 'webapp/videos/after.mp4'
         },
         {
             username: '@cryptoKing',
@@ -82,13 +82,13 @@ function createHomePage() {
             username: '@quantumtradercfd',
             caption:'Tip me to get more videos like this',
             color:'black',
-            videoUrl: 'videos/then.mp4'
+            videoUrl: 'webapp/videos/then.mp4'
         },
         {
             username: '@barryrwa',
             caption:'This is how  you learn python',
             color:'black',
-            videoUrl: 'videos/when.mp4',
+            videoUrl: 'webapp/videos/when.mp4',
 
         }
     ];
