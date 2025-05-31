@@ -320,7 +320,7 @@ function createProfilePage() {
     profilePic.classList.add('profile-pic');
 
     const username = document.createElement ('h3');
-    username.textContent = user.username || `${user.first_name} ${user.last_name || ' '`;
+    username.textContent = user.username || `${user.first_name} ${user.last_name} || ' '`;
 
     const statsRow = document.createElement('div');
     statsRow.classList.add('stats-row');
