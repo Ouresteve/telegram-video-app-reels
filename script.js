@@ -5,9 +5,10 @@ window.addEventListener('click',() => {
 });
 //app is fetched
 const app = document.getElementById('app');
-if ( window.Telegram) {
+if ( !window.Telegram) {
     app.innerHtml= `<h2> Open this app in telegram @tip_reelsbot for the best experience`;
 }
+const user=Telegram.WebApp.initDataUnsafe.user;
 
 const pages ={
     home: createHomePage,
@@ -319,7 +320,7 @@ function createProfilePage() {
     profilePic.classList.add('profile-pic');
 
     const username = document.createElement ('h3');
-    username.textContent = '@Steve Oure';
+    username.textContent = user.username || `${user.first_name} ${user.last_name || ' '`;
 
     const statsRow = document.createElement('div');
     statsRow.classList.add('stats-row');
