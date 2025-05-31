@@ -1,4 +1,10 @@
+
+
 let userInteracted = false;
+window.addEventListener('click',() => {
+    userInteracted=true;
+});
+//app is fetched
 const app = document.getElementById('app');
 const pages ={
     home: createHomePage,
@@ -10,11 +16,13 @@ const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         const video =entry.target;
         if (entry.isIntersecting && userInteracted){
+
              video.currentTime=0;
              video.play();
-        }else{
-        video.pause();
+             
         
+        }else{
+            video.pause();
         }
     });
 },{
@@ -23,6 +31,8 @@ const observer = new IntersectionObserver((entries) => {
 
 
 showPage("profile");
+//show a page using this function
+
 function showPage(pageName) {
     
     clearApp();
@@ -37,48 +47,48 @@ function showPage(pageName) {
         }
     }
 }
-
+//clear app itself
 function clearApp(){
     app.innerHTML= " ";
 }
 const tg = window.Telegram.WebApp;
-window.addEventListener('click',() => {
-    userInteracted=true;
-});
+
+//home page 
 function createHomePage() {
     const homeDiv= document.createElement('div');
+    homeDiv.id="seces"
     homeDiv.classList.add('home');
     const videos =[
          {
               username: '@steve',
               caption:'check out this cool clip',
               color:'black',
-              videoUrl: 'webapp/videos/now.mp4'
+              videoUrl: 'videos/now.mp4'
          },
         {
              username: '@maiko',
-             caption:'Another awesome moment',
-             color:'#e67e22',
-             videoUrl: 'webapp/videos/after.mp4'
+             caption:'Some things they solid they are built to last , some things  they fall apart they break like glass, sometimes its scary what they call love and how first what is  can turn to what was ,waking up this morning , and im drank agaain ... without you here,',
+             color:'black',
+             videoUrl: 'videos/after.mp4'
         },
         {
             username: '@cryptoKing',
             caption:'Ton tipping is live',
-            color:'#9b59b6',
-             videoUrl: 'webapp/videos/where.mp4'
+            color:'black',
+             videoUrl: 'videos/where.mp4'
 
         },
         {
             username: '@quantumtradercfd',
             caption:'Tip me to get more videos like this',
-            color:'#9b59b6',
-            videoUrl: 'webapp/videos/then.mp4'
+            color:'black',
+            videoUrl: 'videos/then.mp4'
         },
         {
             username: '@barryrwa',
             caption:'This is how  you learn python',
-            color:'#9b59b8',
-            videoUrl: 'webapp/videos/when.mp4',
+            color:'black',
+            videoUrl: 'videos/when.mp4',
 
         }
     ];
@@ -92,6 +102,7 @@ function createHomePage() {
         
         const videoDiv = document.createElement('div');
         videoDiv.classList.add('video');
+        videoDiv.id="sec";
         videoDiv.style.backgroundColor = video.color;
     
     
@@ -101,6 +112,7 @@ function createHomePage() {
         infoDiv.innerHTML= `<h4>${video.username}</h4> <p>${video.caption}</p>`;
 
         const videoEl = document.createElement('video');
+    
         videoEl.src = video.videoUrl;
         videoEl.controls = true;
         videoEl.autoplay= false;
@@ -108,29 +120,33 @@ function createHomePage() {
         videoEl.muted = false;
         videoEl.classList.add('video-player');
 
-
+        videoEl.addEventListener('dblclick', () => {
+            //videoEl.requestFullscreen();
+            likeVideo(index);
+        });
         const actionsDiv = document.createElement('div');
         actionsDiv.classList.add('video-actions');
         actionsDiv.innerHTML = `<button class="like-video" onclick="likeVideo(${index})"><i class="fas fa-heart"></i></button><button onclick="tipCreator('${video.username}')"><i class="fas fa-coins"></i></button><button onclick="shareVideo('${video.caption}','${video.username}')"><i class="fas fa-share"></i></button><button onclick="toggleComments(${index})"><i class="fas fa-comment"></i></button>`;
 
-        const commentDiv = document.createElement('div');
-        commentDiv.classList.add('comment-section');
-        commentDiv.style.display = 'none';
-        commentDiv.innerHTML =` <div class="comments" id="comments-${index}"></div> <input type="text" placeholder="Add a comment". . . " onkeydown="submitComment(event, ${index} )"> `;
+        //commentDiv.style.display = 'none';
+    //commentDiv.innerHTML =` <div class="comments" id="comments-${index}"></div> <input type="text" placeholder="Add a comment". . . " onkeydown="submitComment(event, ${index} )"> `;
         document.querySelectorAll('.video-player').forEach(video => {
             observer.observe(video);
+            
         });
        
         const bottomDiv = document.createElement('div');
         bottomDiv.classList.add('bottom-bar');
-        bottomDiv.innerHTML= `<button style="background: red"><i class="fas fa-home"></i></button><button onclick="showPage('search')"><i class="fas fa-search"></i></button><button onclick="showPage('upload')"><i class="fas fa-upload"></i></button><button onclick="showPage('profile')"><i class="fas fa-user"></i></button>`;
+        bottomDiv.innerHTML= `<button style="background-color: red"><i class="fas fa-home"></i></button><button onclick="showPage('search')"><i class="fas fa-search"></i></button><button onclick="showPage('upload')"><i class="fas fa-upload"></i></button><button onclick="showPage('profile')"><i class="fas fa-user"></i></button>`;
+        
+        
         videoDiv.appendChild(bottomDiv);
-        videoDiv.appendChild(commentDiv);
+       // videoDiv.appendChild(commentDiv);
         videoDiv.appendChild(videoEl);
         videoDiv.appendChild(infoDiv);
         videoDiv.appendChild(actionsDiv);
 
-
+        
         homeDiv.appendChild(videoDiv);
     });
 
@@ -138,73 +154,158 @@ function createHomePage() {
     return homeDiv;
 }
 
+//search page
 function createSearchPage(){
+    const srchP = document.createElement('div');
+    srchP.classList.add('search-page');
+    const bottomDiv = document.createElement('div');
+    bottomDiv.classList.add('bottom-bar');
+    bottomDiv.innerHTML= `<button  button onclick= showPage('home') ><i class="fas fa-home"></i></button><button onclick="showPage('search')" style="background-color: red"><i class="fas fa-search"></i></button><button onclick="showPage('upload')"><i class="fas fa-upload"></i></button><button onclick="showPage('profile')"><i class="fas fa-user"></i></button>`;
+    srchP.appendChild(bottomDiv);
+    return srchP;
 
 }
+//upload page
 function createUploadPage() {
     const uploadDiv = document.createElement('div');
     uploadDiv.classList.add('upload-page');
 
     const title = document.createElement('h2');
-    title.textContent = "Upload a video";
+    title.textContent = "Upload your Content";
+    title.style.textAlign='center';
+
+    const form = document.createElement('form');
+    form.id = 'uploadForm';
+    form.style.display='flex';
+    form.style.flexDirection='column';
+    form.style.alignItems='center';
+    form.style.gap='15px';
+    form.style.margin='20px';
+
+    const fileLabel= document.createElement('label');
+    fileLabel.textContent= "Select video from your device";
+    fileLabel.style.fontWeight='bold';      
 
     const fileInput = document.createElement('input');
     fileInput.classList.add('input');
-    fileInput.type='file';
+    fileInput.type = 'file';
     fileInput.accept = 'video/*';
+    fileInput.name = 'video';
+    fileInput.required=true;
+
+    
 
     const captionInput = document.createElement('input');
-    captionInput.classList.add('input');
+    captionInput.style.zIndex='10';
     captionInput.type = 'text';
-    captionInput.placeholder = "Add a captiton . . . ";
+    captionInput.name = 'caption';
+    captionInput.placeholder = "Add a caption...";
+    captionInput.style.left='50%';
+    captionInput.rows=3;
+   // captionInput.style.transform='translateX(-50%)';
+    captionInput.style.top = '10px';
+    captionInput.style.positon= 'absolute';
+    captionInput.style.padding = '5px 10px';
+    captionInput.style.border= 'none';
+    captionInput.style.borderRadius= '20px';
+    captionInput.style.fontSize='14px';
+    captionInput.style.outline='none';
+
+    const previewWrapper = document.createElement('div');
+    previewWrapper.style.positon= 'relative';
+    previewWrapper.style.width= '100%';
+    previewWrapper.style.maxwidth = '600px';
+    previewWrapper.style,marginTop='20px';
+    previewWrapper.style.display = 'inline-block';
+
 
     const preview = document.createElement('video');
     preview.controls = true;
     preview.style.display = 'none';
+    preview.style.borderRadius='20px';
     preview.style.maxWidth = '100%';
 
+    previewWrapper.appendChild(captionInput);
+    
     fileInput.addEventListener('change', () => {
-        const file= fileInput.files[0];
-        if (file){
+        const file = fileInput.files[0];
+        
+        if (file) {
+            
             const url = URL.createObjectURL(file);
-            preview.src= url;
+            preview.src = url;
+            preview.style.objectFit= 'contain';
+           // preview.style.left='0';
+           // preview.style.right= '0';
+            preview.style.height= '100vh';
+            preview.style.width = '100vw';
+            preview.style.position = 'relative';
             preview.style.display = 'block';
+            
+           
         }
+         
     });
-
+    
+    const uploadButton = document.createElement('button');
+    uploadButton.type = 'submit';
+    uploadButton.innerHTML = `<i class="fas fa-upload"></i> Upload`;
 
     const actionsDiv = document.createElement('div');
     actionsDiv.classList.add('video-actions');
-    actionsDiv.innerHTML = `<button onclick=upload_action()><i class="fas fa-upload"></i></button><button><i class="fas fa-bolt"></i></button>`;
+    actionsDiv.appendChild(uploadButton);
+    
+    
+    previewWrapper.appendChild(preview);
+    form.appendChild(fileInput);
+    
+    
+    form.appendChild(previewWrapper);
+    
+    
+    //form.appendChild(captionInput);
+    
+    form.appendChild(actionsDiv);
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        showPage('upload');
+        const res = await fetch('http://localhost:3000/upload', {
+            method: 'POST',
+            body: formData
+            
+        });
+        
+
+        const data = await res.json();
+        console.log('Video is accessible at:', data.video_url);
+        alert('Video uploaded successfully!');
+         
+    });
 
     const bottomDiv = document.createElement('div');
     bottomDiv.classList.add('bottom-bar');
-    bottomDiv.innerHTML= `<button onclick= showPage('home')><i class="fas fa-home"></i></button><button onclick="showPage('search')"><i class="fas fa-search"></i></button><button style="background: red" onclick="showPage('upload')"><i class="fas fa-upload"></i></button><button onclick="showPage('profile')"><i class="fas fa-user"></i></button>`;
-    
-    
-    
-    
-    
-    uploadDiv.appendChild(bottomDiv);
-    uploadDiv.appendChild(actionsDiv);
+    bottomDiv.innerHTML = `
+        <button onclick="showPage('home')"><i class="fas fa-home"></i></button>
+        <button onclick="showPage('search')"><i class="fas fa-search"></i></button>
+        <button style="background-color: red" onclick="showPage('upload')"><i class="fas fa-upload"></i></button>
+        <button onclick="showPage('profile')"><i class="fas fa-user"></i></button>`;
+
     uploadDiv.appendChild(title);
-    uploadDiv.appendChild(fileInput);
-    uploadDiv.appendChild(captionInput);
-    uploadDiv.appendChild(preview);
-    
-    //app.appendChild(uploadDiv);
+    uploadDiv.appendChild(form);
+    uploadDiv.appendChild(bottomDiv);
 
     return uploadDiv;
 }
 
-
-
+  //Create the profile page
 function createProfilePage() {
     const profileDiv = document.createElement('div');
     profileDiv.classList.add('profile-page');
 
     const profilePic = document.createElement('img');
-    profilePic.src = 'webapp/videos/profile.jpg';
+    profilePic.src = 'videos/profile.jpg';
     profilePic.alt = 'Profile Picture';
     profilePic.classList.add('profile-pic');
 
@@ -230,7 +331,7 @@ function createProfilePage() {
 
     const bottomDiv = document.createElement('div');
     bottomDiv.classList.add('bottom-bar');
-    bottomDiv.innerHTML= `<button onclick= showPage('home')><i class="fas fa-home"></i></button><button onclick="showPage('search')"><i class="fas fa-search"></i></button><button onclick="showPage('upload')"><i class="fas fa-upload"></i></button><button style="background: red" onclick="showPage('profile')"><i class="fas fa-user"></i></button>`;
+    bottomDiv.innerHTML= `<button onclick= showPage('home')><i class="fas fa-home"></i></button><button onclick="showPage('search')"><i class="fas fa-search"></i></button><button onclick="showPage('upload')"><i class="fas fa-upload"></i></button><button style="background-color: red" onclick="showPage('profile')"><i class="fas fa-user"></i></button>`;
    
 
     const videoGrid = document.createElement('div');
@@ -239,11 +340,14 @@ function createProfilePage() {
     const thumb = document.createElement('video');
     thumb.src= 'videos/after.mp4';
     thumb.controls = false;
-    thumb.muted = true;
+    thumb.muted = false;
     thumb.classList.add('video-thumb');
 
     thumb.onclick =()=> {
-        alert('open video viewer');
+
+        thumb.mute = false;
+        thumb.play();
+        
     };
     videoGrid.appendChild(thumb);
     profileDiv.appendChild(bottomDiv);
@@ -255,7 +359,7 @@ function createProfilePage() {
     return profileDiv;
 
 }
-
+//like
 function likeVideo(index) {
     const videoDiv = document.querySelectorAll('.video')[index];
     const likeButton = videoDiv.querySelector('.like-video');
@@ -270,6 +374,7 @@ function likeVideo(index) {
     }
     
 }
+//tip
 function tipCreator(username) {
     if(window.Telegram && window.Telegram.webApp){
     
@@ -292,6 +397,7 @@ function tipCreator(username) {
 
     }
 }
+//share
 function shareVideo(caption,username){
      if(navigator.share) {
         navigator.share({
@@ -306,22 +412,67 @@ function shareVideo(caption,username){
     }
 
 }
+//comments
 function toggleComments(index) {
-    const videoDivs = document.querySelectorAll('.video');
-    const commentSection = videoDivs[index].querySelector('.comment-section');
+    console.log("toggle comments called with index:",index);
+    const cm = document.getElementById('seces');
+    const commentD = document.createElement('div');
+    commentD.id="secs";
+    
+    commentD.classList.add('comment-section');
+        
 
-    document.querySelectorAll('.comment-section').forEach((section, i) => {
-         if(i !== index) section.style.display ='none';
+    
+    cm.appendChild(commentD);
+    const commentDiv = document.createElement('div');
+    commentDiv.className = 'comment-panel';
+    
+    commentDiv.innerHTML = `<div class="comment-header">
+                                <span>Comments</span>
+                                <button id="close-comments">&times;</button>
+                            </div>
+                            <div class="comment-list" id= "comment-list-${index}">
+                                <!--Comments will be appended here-->
+                            </div>
+                            <div class="comment-input-area">
+                                <input type="text" placeholder="Add a comment. . . " id="comment-input-${index}"/>
+                                <button id="send-comment-${index}">Send</button>
+                            </div>`;
+    
 
-        document.addEventListener('click', function (event ){
-           if (!commentSection.contains(event.target) && event.target.tagName !== 'BUTTON'){
-           section.style.display = 'none' ;
-            }
-    }); 
+    commentDiv.querySelector('#close-comments').onclick = () => {
+            commentD.remove();
+            commentDiv.remove();
+    };
+    const input=commentDiv.querySelector(`#comment-input-${index}`);
 
-    });
+    const commentList = commentDiv.querySelector(`#comment-list-${index}`);
+    let lastScrollTop = 0;
+    //commentList.addEventListener('', () =>{
+   //     
+  //  });
+    console.log("commentList:",commentDiv.innerHTML);
+    commentDiv.querySelector(`#send-comment-${index}`).onclick =() => {
+        
+        const text = input.value.trim();
+        console.log("text: ", text);
+        if( text){
+            
+            const comment=document.createElement('div');
+            comment.className='comment';
+            comment.textContent= text;
 
-    commentSection.style.display = commentSection.style.display === 'none' ? 'block' : 'none';
+            commentList.appendChild(comment);
+            input.value='';
+           // commentD.style.height="100%";
+        }else {
+            console.warn("one of the elements is empty");
+        }
+    };
+    commentD.appendChild(commentDiv);
+    
+    return commentDiv;
+                                
 
 }
 
@@ -341,6 +492,3 @@ function submitComment (event, index) {
     }
 }
     
-function upload_action() {
-    alert("Video Uploaded successfully");
-}
