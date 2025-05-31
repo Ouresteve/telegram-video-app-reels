@@ -1,4 +1,6 @@
-
+if ( typeof Telegram === 'undefined' || !Telegram.webApp) {
+    directPage();
+}
 
 let userInteracted = false;
 window.addEventListener('click',() => {
@@ -10,7 +12,8 @@ const pages ={
     home: createHomePage,
     search: createSearchPage,
     upload: createUploadPage,
-    profile: createProfilePage
+    profile: createProfilePage,
+    notify: directPage
 };
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -299,6 +302,11 @@ function createUploadPage() {
     return uploadDiv;
 }
 
+function directPage() {
+     const dDiv = document.createElement('div');
+     dDiv.innerHtml=`<h2>Kindly Open this application in telegram! @tip_reelsbot</h2>`;
+    return dDiv;
+}
   //Create the profile page
 function createProfilePage() {
     const profileDiv = document.createElement('div');
