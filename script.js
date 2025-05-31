@@ -5,7 +5,7 @@ window.addEventListener('click',() => {
 });
 //app is fetched
 const app = document.getElementById('app');
-if ( typeof Telegram === 'undefined' || !Telegram.webApp) {
+if ( window.Telegram) {
     app.innerHtml= `<h2> Open this app in telegram @tip_reelsbot for the best experience`;
 }
 
