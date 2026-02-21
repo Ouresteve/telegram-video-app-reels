@@ -304,6 +304,9 @@ function createUploadPage() {
 
     return uploadDiv;*/
     window.open('https://t.me/tip_reels_bot', '_blank');
+    showPage("profile");
+
+    
 }
 
 function directPage() {
