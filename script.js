@@ -6,7 +6,7 @@ window.addEventListener('click',() => {
 //app is fetched
 const app = document.getElementById('app');
 if ( !window.Telegram) {
-    app.innerHtml= `<h2> Open this app in telegram @tip_reelsbot for the best experience`;
+    directPage();
 }
 const user=Telegram.WebApp.initDataUnsafe.user;
 
