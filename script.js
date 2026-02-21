@@ -172,6 +172,7 @@ function createSearchPage(){
 }
 //upload page
 function createUploadPage() {
+    /*
     const uploadDiv = document.createElement('div');
     uploadDiv.classList.add('upload-page');
 
@@ -301,12 +302,12 @@ function createUploadPage() {
     uploadDiv.appendChild(form);
     uploadDiv.appendChild(bottomDiv);
 
-    return uploadDiv;
+    return uploadDiv;*/
 }
 
 function directPage() {
      const dDiv = document.createElement('div');
-     dDiv.innerHtml=`<h2>Kindly Open this application in telegram! @tip_reelsbot</h2>`;
+     dDiv.innerHtml=`<h2>Kindly Open this application in telegram! @tip_reels_bot</h2>`;
     return dDiv;
 }
   //Create the profile page
