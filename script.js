@@ -303,6 +303,7 @@ function createUploadPage() {
     uploadDiv.appendChild(bottomDiv);
 
     return uploadDiv;*/
+    window.open('https://t.me/tip_reels_bot', '_blank');
 }
 
 function directPage() {
