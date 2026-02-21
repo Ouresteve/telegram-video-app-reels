@@ -229,6 +229,12 @@ button:hover {
     margin-top: 12px;
 
 }
+.stats-row button {
+    color: whitesmoke;
+    background-color: aquamarine;
+    border-radius: 8px;
+    
+}
 .video-grid{
     display:grid;
     grid-template-columns: repeat(3,1fr);
