@@ -233,7 +233,8 @@ button:hover {
     color: whitesmoke;
     background-color: aquamarine;
     border-radius: 8px;
-    
+    border: none;
+    padding: 10px 20px;
 }
 .video-grid{
     display:grid;
