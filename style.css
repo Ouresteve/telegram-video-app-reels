@@ -230,7 +230,7 @@ button:hover {
 
 }
 .stats-row button {
-    color: whitesmoke;
+    color:black;
     background-color: aquamarine;
     border-radius: 8px;
     border: none;
